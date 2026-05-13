@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- ====== DIMPPLE ANALYTICS (Tracking) ====== -->
+    <script type="text/javascript">
+        (function(g,u,r,i,d,e,a){g.DimppleAnalyticsObject=d;if(!(d in g)){g[d]=function(){
+        g[d].q.push(arguments);};g[d].q=[];}g[d].l=(new Date()).getTime();var e=u.createElement(r);
+        e.src=i;e.async=true;var a=u.getElementsByTagName(r)[0];a.parentNode.insertBefore(e,a)
+        })(window,document,'script','//api.dimpple.com/public/js/analytics.js?trk=15647.2TUMNDc.3ad6e647','trk');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cartilha da Diarista Premium — 7 respostas prontas pro WhatsApp que fazem a cliente aceitar seu preço sem pechinchar.">
@@ -379,7 +387,7 @@
     <div class="container center">
         <h2 class="titulo-secao cor-escuro">Na próxima mensagem que chegar no seu Zap,<br>você vai saber exatamente o que responder.</h2>
         <p class="texto-final-destaque">Sem medo. Sem pechincha. Sem perder cliente.</p>
-        <a href="#oferta" class="cta-btn cta-grande">QUERO MINHAS 7 RESPOSTAS PRONTAS →</a>
+        <a href="#oferta" class="cta-btn cta-grande" id="cta-final">QUERO MINHAS 7 RESPOSTAS PRONTAS →</a>
         <p class="texto-micro">🔒 Pagamento seguro • Acesso imediato • Garantia 7 dias</p>
     </div>
 </section>
@@ -391,6 +399,26 @@
         <p class="footer-copy">© 2026 Cartilha da Diarista Premium — Todos os direitos reservados.</p>
     </div>
 </footer>
+
+<!-- ====== DIMPPLE: Evento InitiateCheckout nos CTAs ====== -->
+<script type="text/javascript">
+    // Dispara InitiateCheckout quando o usuário clica em qualquer botão CTA de compra
+    document.addEventListener('DOMContentLoaded', function() {
+        var ctaBotoes = document.querySelectorAll('.cta-btn');
+        ctaBotoes.forEach(function(botao) {
+            botao.addEventListener('click', function() {
+                if (typeof trk === 'function') {
+                    trk('event', 'InitiateCheckout', {
+                        content_name: 'Cartilha da Diarista Premium',
+                        content_id: 'diarista-premium-scripts',
+                        value: 37.00,
+                        currency: 'BRL'
+                    });
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
