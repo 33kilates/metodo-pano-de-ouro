@@ -327,7 +327,7 @@
                 <p class="checkout-de">De <s>R$ 258,00</s> por:</p>
                 <p class="checkout-parcela">5x de <strong>R$ 8,19</strong></p>
                 <p class="checkout-avista">ou R$ 37,00 à vista</p>
-                <a href="#" class="cta-btn" id="cta-principal">QUERO MINHA CARTILHA →</a>
+                <a href="https://pay.kiwify.com.br/8m6m5jI" class="cta-btn" id="cta-principal">QUERO MINHA CARTILHA →</a>
                 <div class="selos-grid">
                     <div class="selo">
                         <span>🔒</span>
@@ -387,7 +387,7 @@
     <div class="container center">
         <h2 class="titulo-secao cor-escuro">Na próxima mensagem que chegar no seu Zap,<br>você vai saber exatamente o que responder.</h2>
         <p class="texto-final-destaque">Sem medo. Sem pechincha. Sem perder cliente.</p>
-        <a href="#" class="cta-btn cta-grande" id="cta-final">QUERO MINHAS 7 RESPOSTAS PRONTAS →</a>
+        <a href="https://pay.kiwify.com.br/8m6m5jI" class="cta-btn cta-grande" id="cta-final">QUERO MINHAS 7 RESPOSTAS PRONTAS →</a>
         <p class="texto-micro">🔒 Pagamento seguro • Acesso imediato • Garantia 7 dias</p>
     </div>
 </section>
@@ -400,19 +400,13 @@
     </div>
 </footer>
 
-<!-- ====== DIMPPLE: Evento InitiateCheckout + Redirecionamento ====== -->
+<!-- ====== DIMPPLE: Evento InitiateCheckout nos CTAs ====== -->
 <script type="text/javascript">
-    // URL limpa do checkout — redirecionamento via JS para evitar
-    // que o Dimpple decore o link com UTMs que quebram a Kiwify
-    var CHECKOUT_URL = 'https://pay.kiwify.com.br/r6M5uYY';
-
+    // Dispara InitiateCheckout quando o usuário clica em qualquer botão CTA de compra
     document.addEventListener('DOMContentLoaded', function() {
         var ctaBotoes = document.querySelectorAll('.cta-btn');
         ctaBotoes.forEach(function(botao) {
-            botao.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                // Dispara o evento InitiateCheckout no Dimpple
+            botao.addEventListener('click', function() {
                 if (typeof trk === 'function') {
                     trk('event', 'InitiateCheckout', {
                         content_name: 'Cartilha da Diarista Premium',
@@ -421,12 +415,6 @@
                         currency: 'BRL'
                     });
                 }
-
-                // Pequeno delay para garantir que o evento seja enviado
-                // antes do redirecionamento
-                setTimeout(function() {
-                    window.location.href = CHECKOUT_URL;
-                }, 300);
             });
         });
     });
