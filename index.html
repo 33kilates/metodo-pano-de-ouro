@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- ====== DIMPPLE ANALYTICS (Tracking) ====== -->
-    <script type="text/javascript">
-        (function(g,u,r,i,d,e,a){g.DimppleAnalyticsObject=d;if(!(d in g)){g[d]=function(){
-        g[d].q.push(arguments);};g[d].q=[];}g[d].l=(new Date()).getTime();var e=u.createElement(r);
-        e.src=i;e.async=true;var a=u.getElementsByTagName(r)[0];a.parentNode.insertBefore(e,a)
-        })(window,document,'script','//api.dimpple.com/public/js/analytics.js?trk=15647.2TUMNDc.3ad6e647','trk');
+    <!-- ====== META PIXEL (Facebook Pixel) ====== -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '985867260470973');
+        fbq('track', 'PageView');
     </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=985867260470973&ev=PageView&noscript=1"
+    /></noscript>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -400,17 +409,17 @@
     </div>
 </footer>
 
-<!-- ====== DIMPPLE: Evento InitiateCheckout nos CTAs ====== -->
-<script type="text/javascript">
+<!-- ====== META PIXEL: Evento InitiateCheckout nos CTAs ====== -->
+<script>
     // Dispara InitiateCheckout quando o usuário clica em qualquer botão CTA de compra
     document.addEventListener('DOMContentLoaded', function() {
         var ctaBotoes = document.querySelectorAll('.cta-btn');
         ctaBotoes.forEach(function(botao) {
             botao.addEventListener('click', function() {
-                if (typeof trk === 'function') {
-                    trk('event', 'InitiateCheckout', {
+                if (typeof fbq === 'function') {
+                    fbq('track', 'InitiateCheckout', {
                         content_name: 'Cartilha da Diarista Premium',
-                        content_id: 'diarista-premium-scripts',
+                        content_ids: ['diarista-premium-scripts'],
                         value: 37.00,
                         currency: 'BRL'
                     });
