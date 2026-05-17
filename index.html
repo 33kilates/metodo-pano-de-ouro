@@ -419,15 +419,17 @@
     </div>
 </footer>
 
-<!-- ====== META PIXEL: Evento InitiateCheckout nos CTAs ====== -->
+<!-- ====== META PIXEL: Evento AddToCart nos CTAs ====== -->
+<!-- InitiateCheckout agora é disparado pelo Kiwify quando a pessoa chega ao checkout real -->
 <script>
-    // Dispara InitiateCheckout quando o usuário clica em qualquer botão CTA de compra
+    // Dispara AddToCart quando o usuário clica em qualquer botão CTA de compra
+    // Isso separa: AddToCart (clicou no botão) vs InitiateCheckout (chegou no Kiwify)
     document.addEventListener('DOMContentLoaded', function() {
         var ctaBotoes = document.querySelectorAll('.cta-btn');
         ctaBotoes.forEach(function(botao) {
             botao.addEventListener('click', function() {
                 if (typeof fbq === 'function') {
-                    fbq('track', 'InitiateCheckout', {
+                    fbq('track', 'AddToCart', {
                         content_name: 'Cartilha da Diarista Premium',
                         content_ids: ['diarista-premium-scripts'],
                         value: 37.00,
